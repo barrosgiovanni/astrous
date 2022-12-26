@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_26_182913) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_26_185353) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -40,6 +40,24 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_26_182913) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "astros", force: :cascade do |t|
+    t.string "name"
+    t.string "body_type"
+    t.string "around_planet"
+    t.string "mass_value"
+    t.integer "average_temperature"
+    t.float "volume"
+    t.float "density"
+    t.float "gravity"
+    t.string "mean_radius"
+    t.string "discovered_by"
+    t.date "discovered_date"
+    t.integer "price"
+    t.string "image_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
