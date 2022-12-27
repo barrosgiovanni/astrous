@@ -1,0 +1,22 @@
+<header>
+  <div class="container" style="min-width:84%; margin: 0 auto;">
+    <div class="astro-cards row justify-content-center pt-5">
+      <% @astros.each do |astro|%>
+        <div class="astro-card col-3 my-3">
+            <%= image_tag "moon.jpg", class: "astro-img mb-3", crop: :fill %>
+            <div class="astro-info">
+              <p class="mx-2 mb-1">name:<%= astro.name %></p>
+              <p class="mx-2 mb-1">bodyType:<%= astro.body_type %></p>
+              <p class="mx-2 mb-1">massValue:<%= astro.mass_value %></p>
+              <p class="mx-2 mb-1">avgTemp:<%= astro.average_temperature %></p>
+              <p class="mx-2 mb-1">volume:<%= astro.volume %></p>
+              <p class="mx-2 mb-1">density:<%= astro.density %></p>
+              <p class="mx-2 mb-1">gravity:<%= astro.gravity %></p>
+              <p class="mx-2 mb-1">meanRadius:<%= astro.mean_radius %></p>
+              <p class="mx-2 mb-1">price:<%= astro.price %>A$$</p>
+            </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</header>
