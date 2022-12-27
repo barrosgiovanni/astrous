@@ -1,7 +1,36 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+require 'rest-client'
+
+puts "Cleaning database..."
+
+User.destroy_all
+Astro.destroy_all
+Booking.destroy_all
+
+puts "Creating astros..."
+
+def astros_dataset
+  # accessing the api and iterating to create astros ...
+  astros = RestClient.get("https://api.le-systeme-solaire.net/rest/bodies/")
+  astros_array = JSON.parse(astros)["bodies"]
+  astros_array.each do |astro|
+    Astro.create(
+      name: astro["englishName"],
+      body_type: astro["bodyType"],
+      average_temperature: astro["avgTemp"],
+      density: astro["density"],
+      gravity: astro["gravity"],
+      mean_radius: astro["meanRadius"],
+      discovered_by: astro["discoveredBy"],
+      discovered_date: astro["discoveryDate"],
+      price: ((astro["meanRadius"].to_i) + 250) * 5,
+      image_url: "",
+      around_planet: astro["aroundPlanet"] == nil ? "" : astro["aroundPlanet"]["planet"].capitalize,
+      mass_value: astro["mass"] == nil ? "" : "#{astro['mass']['massValue']}x10^#{astro['mass']['massExponent']}",
+      volume: astro["vol"] == nil ? 0.0 : "#{astro['vol']['volValue']}x10^#{astro['vol']['volExponent']}"
+    )
+  end
+end
+
+astros_dataset()
+
+puts "Finished seeding the app!"
