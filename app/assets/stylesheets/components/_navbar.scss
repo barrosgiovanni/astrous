@@ -8,5 +8,19 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 40px;
+    height: 5rem;
+    width: 100%;
+}
+
+.container-fluid {
+  margin: 0 1rem !important;
+}
+
+.nav-link {
+  color: #fff !important;
+  font-size: 1.2rem;
+}
+
+.nav-item {
+  margin-left: 3.2rem;
 }
