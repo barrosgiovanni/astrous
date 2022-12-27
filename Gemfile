@@ -78,3 +78,4 @@ end
 
 gem "devise"
 gem "cloudinary"
+gem 'rest-client', '~> 2.1'
