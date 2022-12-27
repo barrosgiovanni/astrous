@@ -8,21 +8,29 @@ Booking.destroy_all
 
 puts "Creating astros..."
 
-def astro_dataset
+def astros_dataset
   # accessing the api and iterating to create astros ...
-    astros = RestClient.get("https://api.themoviedb.org/3/movie/top_rated?api_key=#{api_data[:key]}&language=en-US&page=#{page}")
-    astros_array = JSON.parse(astros)["results"]
-    astros_array.each do |astro|
-      Astro.create(
-        title: movie["title"],
-        overview: movie["overview"],
-        year: movie["release_date"][0, 4].to_i,
-        poster_url: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/#{movie["poster_path"]}",
-        rating: movie["vote_average"]
-      )
+  astros = RestClient.get("https://api.le-systeme-solaire.net/rest/bodies/")
+  astros_array = JSON.parse(astros)["bodies"]
+  astros_array.each do |astro|
+    Astro.create(
+      name: astro["englishName"],
+      body_type: astro["bodyType"],
+      average_temperature: astro["avgTemp"],
+      density: astro["density"],
+      gravity: astro["gravity"],
+      mean_radius: astro["meanRadius"],
+      discovered_by: astro["discoveredBy"],
+      discovered_date: astro["discoveryDate"],
+      price: ((astro["meanRadius"].to_i) + 250) * 5,
+      image_url: "",
+      around_planet: astro["aroundPlanet"] == nil ? "" : astro["aroundPlanet"]["planet"].capitalize,
+      mass_value: astro["mass"] == nil ? "" : "#{astro['mass']['massValue']}x10^#{astro['mass']['massExponent']}",
+      volume: astro["vol"] == nil ? 0.0 : "#{astro['vol']['volValue']}x10^#{astro['vol']['volExponent']}"
+    )
   end
 end
 
-movies_dataset()
+astros_dataset()
 
 puts "Finished seeding the app!"
