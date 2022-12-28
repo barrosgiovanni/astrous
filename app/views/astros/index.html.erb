@@ -1,10 +1,16 @@
 <div class="container" style="padding-top: 200px;">
 
-    <div class="headings mb-5">
-
-      <h1 class="text-center">Which astro do you want to be yours today?</h1>
-      <p class="text-center">Choose between one of the many options!</p>
-
+    <div class="row justify-content-center mb-5">
+      <div class="col-6 mb-5">
+        <%= form_with url: astros_path, method: :get, class: "d-flex" do %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control me-1",
+            placeholder: "Find an astro to rent ..."
+          %>
+          <%= submit_tag "astroSearch", class: "btn btn-space" %>
+        <% end %>
+      </div>
     </div>
 
     <div class="cards mx-5">
