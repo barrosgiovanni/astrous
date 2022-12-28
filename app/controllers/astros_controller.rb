@@ -10,6 +10,7 @@ class AstrosController < ApplicationController
   end
 
   def show
+    # description = Astronomy::Information.new.search '#{@astro.name}'
   end
 
   private
@@ -18,3 +19,13 @@ class AstrosController < ApplicationController
     @astro = Astro.find(params[:id])
   end
 end
+
+# [
+#   {"description" =>
+
+#     "images" =>
+#     "name" =>
+# ]
+
+
+# data["description"]["name"]
