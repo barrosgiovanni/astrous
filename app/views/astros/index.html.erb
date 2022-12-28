@@ -1,22 +1,35 @@
-<header>
-  <div class="container" style="min-width:84%; margin: 0 auto;">
-    <div class="astro-cards row justify-content-center pt-5">
+<div class="container" style="padding-top: 200px;">
+
+    <div class="row justify-content-center mb-5">
+      <div class="col-6 mb-5">
+        <%= form_with url: astros_path, method: :get, class: "d-flex" do %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control me-1",
+            placeholder: "Find an astro to rent ..."
+          %>
+          <%= submit_tag "astroSearch", class: "btn btn-space" %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="cards mx-5">
       <% @astros.each do |astro|%>
-        <div class="astro-card col-3 my-3">
-            <%= image_tag "moon.jpg", class: "astro-img mb-3", crop: :fill %>
-            <div class="astro-info">
-              <p class="mx-2 mb-1">name:<%= astro.name %></p>
-              <p class="mx-2 mb-1">bodyType:<%= astro.body_type %></p>
-              <p class="mx-2 mb-1">massValue:<%= astro.mass_value %></p>
-              <p class="mx-2 mb-1">avgTemp:<%= astro.average_temperature %></p>
-              <p class="mx-2 mb-1">volume:<%= astro.volume %></p>
-              <p class="mx-2 mb-1">density:<%= astro.density %></p>
-              <p class="mx-2 mb-1">gravity:<%= astro.gravity %></p>
-              <p class="mx-2 mb-1">meanRadius:<%= astro.mean_radius %></p>
-              <p class="mx-2 mb-1">price:<%= astro.price %>A$$</p>
+        <div class="card-body bg-transparent">
+            <%= image_tag "moon.jpg", class: "card-img mb-3", crop: :fill %>
+            <div class="card-info">
+              <p class="mx-2 mb-1"><strong>name:</strong> <%= astro.name %></p>
+              <p class="mx-2 mb-1"><strong>bodyType:</strong> <%= astro.body_type %></p>
+              <p class="mx-2 mb-1"><strong>massValue:</strong> <%= astro.mass_value %></p>
+              <p class="mx-2 mb-1"><strong>avgTemp:</strong> <%= astro.average_temperature %></p>
+              <p class="mx-2 mb-1"><strong>volume:</strong> <%= astro.volume %></p>
+              <p class="mx-2 mb-1"><strong>density:</strong> <%= astro.density %></p>
+              <p class="mx-2 mb-1"><strong>gravity:</strong> <%= astro.gravity %></p>
+              <p class="mx-2 mb-3"><strong>meanRadius:</strong> <%= astro.mean_radius %></p>
+              <p class="price-info mx-2 mb-1"><strong>price:</strong> <%= astro.price %>A$$</p>
             </div>
         </div>
       <% end %>
     </div>
-  </div>
-</header>
+
+</div>

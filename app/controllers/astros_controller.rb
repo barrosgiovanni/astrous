@@ -1,5 +1,9 @@
 class AstrosController < ApplicationController
   def index
-    @astros = Astro.all
+    if params[:query].present?
+      @astros = Astro.search_astros(params[:query])
+    else
+      @astros = Astro.all
+    end
   end
 end
