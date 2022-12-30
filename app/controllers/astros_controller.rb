@@ -1,5 +1,6 @@
 class AstrosController < ApplicationController
   before_action :set_astro, only: [:show, :destroy]
+  skip_before_action :authenticate_user!, only: [:show, :index]
 
   def index
     if params[:query].present?
@@ -11,12 +12,29 @@ class AstrosController < ApplicationController
 
   def show
     # description = Astronomy::Information.new.search '#{@astro.name}'
+    # astro_info = Astronomy::Information.new.search "Uranus"
+    # astro_info.each { |astro| puts astro["description"] if astro["name"] == "Uranus" }
+  end
+
+  def new
+    @astro = Astro.new
+  end
+
+  def create
+    @astro = Astro.new(astro_params)
+    @astro.user = current_user
+    @astro.save
+    redirect_to astro_path(@astro), notice: "Astro was successfully created!"
   end
 
   private
 
   def set_astro
     @astro = Astro.find(params[:id])
+  end
+
+  def astro_params
+    params.require(:astro).permit(:name, :body_type, :average_temperature, :density, :gravity, :mean_radius, :discovered_by, :discovered_date, :price, :image_url, :around_planet, :mass_value, :volume, :description)
   end
 end
 
