@@ -14,7 +14,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.astro = @astro
     @booking.user = current_user
-    @booking.status = "Pending."
+    @booking.status = "Pending"
 
     if @booking.save
       redirect_to astro_bookings_path, notice: "Booking request was succesfully created! Check its status!"
