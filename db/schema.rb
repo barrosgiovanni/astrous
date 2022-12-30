@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_28_193010) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_30_164819) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -48,10 +48,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_28_193010) do
     t.string "around_planet"
     t.string "mass_value"
     t.integer "average_temperature"
-    t.float "volume"
     t.float "density"
     t.float "gravity"
-    t.string "mean_radius"
     t.string "discovered_by"
     t.date "discovered_date"
     t.integer "price"
@@ -59,6 +57,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_28_193010) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "description"
+    t.float "mean_radius"
+    t.string "volume"
   end
 
   create_table "bookings", force: :cascade do |t|

@@ -19,14 +19,14 @@ def astros_dataset
       average_temperature: astro["avgTemp"],
       density: astro["density"],
       gravity: astro["gravity"],
-      mean_radius: astro["meanRadius"] == "0.0" ? "Unknown" : astro["meanRadius"],
+      mean_radius: astro["meanRadius"],
       discovered_by: astro["discoveredBy"],
       discovered_date: astro["discoveryDate"],
       price: ((astro["meanRadius"].to_i) + 250) * 50,
       image_url: "",
       around_planet: astro["aroundPlanet"] == nil ? "" : astro["aroundPlanet"]["planet"].capitalize,
       mass_value: astro["mass"] == nil ? "Unknown" : "#{astro['mass']['massValue']}x10^#{astro['mass']['massExponent']}",
-      volume: astro["vol"] == nil ? 0.0 : "#{astro['vol']['volValue']}x10^#{astro['vol']['volExponent']}"
+      volume: astro["vol"] == nil ? "Unknown" : "#{astro['vol']['volValue']}x10^#{astro['vol']['volExponent']}"
     )
   end
 end
