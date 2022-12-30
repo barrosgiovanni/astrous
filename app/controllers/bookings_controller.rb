@@ -2,7 +2,7 @@ class BookingsController < ApplicationController
   before_action :set_astro_id, only: [:new, :create]
 
   def index
-    @bookings = Booking.all
+    @bookings = Booking.where("user_id = ?", current_user.id)
   end
 
   def new
@@ -22,10 +22,20 @@ class BookingsController < ApplicationController
     end
   end
 
+  def destroy
+    @booking = Booking.find(params[:id])
+    @booking.destroy
+    redirect_to astro_bookings_path, notice: "Booking was successfully cancelled!"
+  end
+
   private
 
   def set_astro_id
     @astro = Astro.find(params[:astro_id])
+  end
+
+  def set_booking
+    @booking = Booking.find(params[:id])
   end
 
   def booking_params

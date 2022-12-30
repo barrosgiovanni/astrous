@@ -11,6 +11,7 @@ class AstrosController < ApplicationController
   end
 
   def show
+    @booking = Booking.new
     # description = Astronomy::Information.new.search '#{@astro.name}'
     # astro_info = Astronomy::Information.new.search "Uranus"
     # astro_info.each { |astro| puts astro["description"] if astro["name"] == "Uranus" }

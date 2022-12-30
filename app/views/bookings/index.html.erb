@@ -1,1 +1,14 @@
-<p>index bookings</p>
+<div class="container" style="padding-top: 200px;">
+  <div class="cards mx-5">
+    <% @bookings.each do |booking|%>
+      <div class="card-body bg-transparent">
+        <%= image_tag "moon.jpg", class: "card-img mb-3", crop: :fill %>
+        <div class="card-info">
+          <p class="mx-2 mb-1"><strong>checkIn:</strong> <%= booking.check_in %></p>
+          <p class="mx-2 mb-1"><strong>checkOut:</strong> <%= booking.check_out %></p>
+          <p class="mx-2 mb-1"><strong>status:</strong> <%= booking.status %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
