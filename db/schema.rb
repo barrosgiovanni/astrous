@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_30_164819) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_30_181415) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -59,6 +59,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_30_164819) do
     t.text "description"
     t.float "mean_radius"
     t.string "volume"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_astros_on_user_id"
   end
 
   create_table "bookings", force: :cascade do |t|
@@ -88,6 +90,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_30_164819) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "astros", "users"
   add_foreign_key "bookings", "astros"
   add_foreign_key "bookings", "users"
 end

@@ -1,12 +1,18 @@
 require 'rest-client'
 
-puts "Cleaning database..."
-
+puts "Cleaning user's database..."
 User.destroy_all
+
+puts "Cleaning astro's database..."
 Astro.destroy_all
+
+puts "Cleaning booking's database..."
 Booking.destroy_all
 
-puts "Creating astros..."
+puts "Creating admin user..."
+admin = User.create!(username: "barrosgiovanni", email: "barrosgiovanni@icloud.com", password: "123456")
+
+puts "Now, creating astros..."
 
 def astros_dataset
   # accessing the api and iterating to create astros ...
@@ -26,7 +32,8 @@ def astros_dataset
       image_url: "",
       around_planet: astro["aroundPlanet"] == nil ? "" : astro["aroundPlanet"]["planet"].capitalize,
       mass_value: astro["mass"] == nil ? "Unknown" : "#{astro['mass']['massValue']}x10^#{astro['mass']['massExponent']}",
-      volume: astro["vol"] == nil ? "Unknown" : "#{astro['vol']['volValue']}x10^#{astro['vol']['volExponent']}"
+      volume: astro["vol"] == nil ? "Unknown" : "#{astro['vol']['volValue']}x10^#{astro['vol']['volExponent']}",
+      user_id: 1
     )
   end
 end
