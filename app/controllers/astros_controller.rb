@@ -36,6 +36,11 @@ class AstrosController < ApplicationController
     redirect_to astro_path(@astro), notice: "Astro was successfully updated!"
   end
 
+  def destroy
+    @astro.destroy
+    redirect_to astros_path, status: :see_other
+  end
+
   private
 
   def set_astro
