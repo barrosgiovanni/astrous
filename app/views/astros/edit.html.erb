@@ -1,0 +1,26 @@
+<div class="container d-flex justify-content-start align-items-center" style="padding-top: 180px; border: 2px solid green;">
+  <div class="form-fields">
+    <h1 class="mb-4 mt-1">Update your astro!</h1>
+    <%= simple_form_for(@astro) do |f| %>
+      <%= f.input :name %>
+      <%= f.input :body_type %>
+      <%= f.input :around_planet %>
+      <%= f.input :description %>
+      <%= f.input :mass_value %>
+      <%= f.input :volume %>
+      <%= f.input :average_temperature %>
+      <%= f.input :density %>
+      <%= f.input :gravity %>
+      <%= f.input :mean_radius %>
+      <%= f.input :discovered_by %>
+      <%= f.input :discovered_date %>
+      <%= f.input :image_url %>
+      <%= f.input :photo, as: :file %>
+      <%= f.input :price %>
+      <%= f.submit "updateAstro!", class: "btn btn-space mt-1 mb-4" %>
+    <% end %>
+    <div class="text-start mt-2">
+      <%= button_to "Back to all astros!", astros_path, method: :get, class: "btn btn-space mt-1 mb-4" %>
+    </div>
+  </div>
+</div>
