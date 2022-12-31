@@ -27,6 +27,8 @@
               <p class="mx-2 mb-1"><strong>gravity:</strong> <%= astro.gravity %></p>
               <p class="mx-2 mb-3"><strong>meanRadius:</strong> <%= astro.mean_radius %></p>
               <p class="price-info mx-2 mb-1"><strong>price:</strong> <%= astro.price %>A$$</p>
+              <%= link_to "bookNow", new_astro_booking_path(astro), class: "btn btn-space mt-4" %>
+              <%= link_to "moreInfo", astro_path(astro), class: "btn btn-space mt-4" %>
             </div>
         </div>
       <% end %>
