@@ -7,11 +7,13 @@
           <p class="mx-2 mb-1"><strong>checkIn:</strong> <%= booking.check_in %></p>
           <p class="mx-2 mb-1"><strong>checkOut:</strong> <%= booking.check_out %></p>
           <p class="mx-2 mb-1"><strong>status:</strong> <%= booking.status %></p>
+        </div>
+        <div>
           <div>
-            <a class="button" style="float: right; vertical-align: middle" >
-            <%= button_to "Confirm", confirm_booking_path(booking), params: {booking: booking}, method: :put %> </a>
-            <a class="button" style="float: center; vertical-align: middle" >
-            <%= button_to "Reject", reject_booking_path(booking), params: {booking: booking}, method: :put %> </a>
+            <a class="button">
+            <%= button_to "Confirm", confirm_booking_path(booking), params: {booking: booking}, method: :put %> </a></div>
+            <a class="button">
+            <%= button_to "Reject", reject_booking_path(booking), params: {booking: booking}, method: :put %> </a></div>
           </div>
         </div>
       </div>
