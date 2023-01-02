@@ -1,6 +1,6 @@
 <div class="container d-flex justify-content-start align-items-center">
 <div class="form-fields">
-    <h1 class="mb-4">signIn</h1>
+    <h1 class="mb-4">Sign in</h1>
 
     <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: {turbo: false}) do |f| %>
       <div class="form-inputs">
@@ -15,7 +15,7 @@
       </div>
 
       <div class="form-actions">
-        <%= f.button :submit, "signIn", class: "btn btn-space my-4" %>
+        <%= f.button :submit, "Sign in", class: "btn btn-space mt-1 mb-4" %>
       </div>
     <% end %>
 

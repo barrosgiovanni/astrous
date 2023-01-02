@@ -11,16 +11,16 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
           <li class="nav-item active">
-            <%= link_to "home", "#", class: "nav-link" %>
+            <%= link_to "Home", "#", class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "about", "#", class: "nav-link" %>
+            <%= link_to "About", "#", class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "astroSearch", "#", class: "nav-link" %>
+            <%= link_to "AstroSearch", "#", class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "contact", "#", class: "nav-link" %>
+            <%= link_to "Contact", "#", class: "nav-link" %>
           </li>
         <% if user_signed_in? %>
           <li class="nav-item dropdown">
@@ -33,7 +33,7 @@
           </li>
         <% else %>
           <li class="nav-item">
-            <%= link_to "signIn/Up", new_user_session_path, class: "btn btn-space nav-link" %>
+            <%= link_to "Sign in", new_user_session_path, class: "btn btn-space nav-link" %>
           </li>
         <% end %>
       </ul>
