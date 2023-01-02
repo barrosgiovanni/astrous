@@ -1,5 +1,5 @@
-<div class="container mt-5 pt-3">
-  <div class="row justify-content-evenly mt-5">
+<div class="container my-5 py-5">
+  <div class="row justify-content-evenly my-5 py-5">
 
     <div class="col-5">
       <%= image_tag "moon.jpg", class: "astro-img", crop: :fill %>
@@ -7,17 +7,17 @@
 
     <div class="col-3 ">
       <h1 class="astro-name mb-4"><%= @astro.name %></h1>
-      <p class="show-data my-2"><strong>bodyType: </strong><%= @astro.body_type%></p>
-      <p class="show-data my-2"><strong>aroundPlanet: </strong><%= @astro.around_planet%></p>
-      <p class="show-data my-2"><strong>massValue: </strong><%= @astro.mass_value%></p>
-      <p class="show-data my-2"><strong>avgTemp: </strong><%= @astro.average_temperature%></p>
-      <p class="show-data my-2"><strong>volume: </strong><%= @astro.volume%></p>
-      <p class="show-data my-2"><strong>density: </strong><%= @astro.density%></p>
-      <p class="show-data my-2"><strong>gravity: </strong><%= @astro.gravity%></p>
-      <p class="show-data my-2"><strong>meanRadius: </strong><%= @astro.mean_radius%></p>
-      <p class="show-data my-2"><strong>discoveredBy: </strong><%= @astro.discovered_by%></p>
-      <p class="show-data my-2"><strong>discoveryDate: </strong><%= @astro.discovered_date%></p>
-      <p class="show-data show-price my-4"><strong>price: <%= @astro.price%> A$$</strong></p>
+      <p class="show-data my-2"><strong>Body type: </strong><%= @astro.body_type%></p>
+      <p class="show-data my-2"><strong>Around planet: </strong><%= @astro.around_planet%></p>
+      <p class="show-data my-2"><strong>Mass value: </strong><%= @astro.mass_value%></p>
+      <p class="show-data my-2"><strong>Avg temperature: </strong><%= @astro.average_temperature%></p>
+      <p class="show-data my-2"><strong>Volume: </strong><%= @astro.volume%></p>
+      <p class="show-data my-2"><strong>Density: </strong><%= @astro.density%></p>
+      <p class="show-data my-2"><strong>Gravity: </strong><%= @astro.gravity%></p>
+      <p class="show-data my-2"><strong>Mean radius: </strong><%= @astro.mean_radius%></p>
+      <p class="show-data my-2"><strong>Discovered by: </strong><%= @astro.discovered_by%></p>
+      <p class="show-data my-2"><strong>Discovered on: </strong><%= @astro.discovered_date%></p>
+      <p class="show-data show-price my-4"><strong>Price: <%= @astro.price%> A$$</strong></p>
       <%= link_to "Book now!", new_astro_booking_path(@astro), class: "btn btn-space mt-4" %>
     </div>
 
