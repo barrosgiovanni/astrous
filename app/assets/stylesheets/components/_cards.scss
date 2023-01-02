@@ -12,13 +12,18 @@
 
 .card-body {
   border: 0.1rem solid #fff;
-  border-radius: 1rem;
+  border-radius: 0.4em;
+}
+
+.card-body:hover {
+  box-shadow: 0 0 2px #31AEBF, 0 0 10px #31AEBF, 0 0 20px #31AEBF;
+  border: 1px solid #31AEBF !important;
 }
 
 .card-img {
   width: 100%;
   border: 0.1rem solid #fff;
-  border-radius: 1rem !important;
+  border-radius: 0.4rem !important;
 }
 
 .price-info {
