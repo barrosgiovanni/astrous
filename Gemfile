@@ -85,3 +85,5 @@ gem 'rest-client', '~> 2.1'
 gem "pg_search"
 
 gem 'astronomy'
+
+gem 'pagy'

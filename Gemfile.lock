@@ -166,6 +166,7 @@ GEM
     nokogiri (1.13.10-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    pagy (6.0.0)
     pg (1.4.5)
     pg_search (2.3.6)
       activerecord (>= 5.2)
@@ -284,6 +285,7 @@ DEPENDENCIES
   font-awesome-sass (~> 6.1)
   jbuilder
   jsbundling-rails
+  pagy
   pg (~> 1.1)
   pg_search
   puma (~> 5.0)
