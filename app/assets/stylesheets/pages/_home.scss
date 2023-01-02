@@ -4,7 +4,6 @@
   min-height: 100vh;
   min-width: 100vw;
   background-size: cover;
-  background-image: url("https://res.cloudinary.com/dgjvosgwy/image/upload/v1672664108/bg2_cb6axn.jpg");
 }
 
 .slogan {
@@ -12,3 +11,9 @@
   font-size: 3.5rem;
   line-height: 6rem;
 }
+
+.page-container {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+  }
