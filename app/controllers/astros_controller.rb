@@ -10,6 +10,11 @@ class AstrosController < ApplicationController
       # @astros = Astro.all
       @pagy, @astros = pagy(Astro.all)
     end
+
+    respond_to do |format|
+      format.html # GET
+      format.turbo_stream # POST
+    end
   end
 
   def show
