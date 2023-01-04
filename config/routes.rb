@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   resources :astros, only: %i[home index show new create edit update destroy] do
+    collection do
+      post :index
+    end
     resources :bookings, only: %i[new create]
       collection do
         get :list_astros

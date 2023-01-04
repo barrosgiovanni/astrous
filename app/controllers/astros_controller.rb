@@ -4,9 +4,16 @@ class AstrosController < ApplicationController
 
   def index
     if params[:query].present?
-      @astros = Astro.search_astros(params[:query])
+      # @astros = Astro.search_astros(params[:query])
+      @pagy, @astros = pagy(Astro.search_astros(params[:query]))
     else
-      @astros = Astro.all
+      # @astros = Astro.all
+      @pagy, @astros = pagy(Astro.all)
+    end
+
+    respond_to do |format|
+      format.html # GET
+      format.turbo_stream # POST
     end
   end
 
