@@ -1,0 +1,24 @@
+.pagination {
+  margin-left: 3rem;
+}
+
+a.page-link {
+  color: #31AEBF;
+}
+
+.page-item.active .page-link {
+  z-index: 3;
+  color: #fff;
+  background-color: #31AEBF !important;
+  border-color: #31AEBF !important;
+  box-shadow: 0 0 1px #31AEBF, 0 0 5px #31AEBF, 0 0 10px #31AEBF;
+}
+
+.page-link:hover {
+  color: #31AEBF !important;
+  box-shadow: 0 0 1px #31AEBF, 0 0 5px #31AEBF, 0 0 10px #31AEBF;
+}
+
+.page-item.active .page-link:hover {
+  color: #fff !important;
+}
