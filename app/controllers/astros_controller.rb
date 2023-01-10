@@ -22,6 +22,7 @@ class AstrosController < ApplicationController
     # description = Astronomy::Information.new.search '#{@astro.name}'
     # astro_info = Astronomy::Information.new.search "Uranus"
     # astro_info.each { |astro| puts astro["description"] if astro["name"] == "Uranus" }
+    @bookings = @astro.bookings
   end
 
   def new
@@ -31,8 +32,11 @@ class AstrosController < ApplicationController
   def create
     @astro = Astro.new(astro_params)
     @astro.user = current_user
-    @astro.save
-    redirect_to astro_path(@astro), notice: "Astro was successfully created!"
+    if @astro.save
+      redirect_to astro_path(@astro)
+    else
+      render :new
+    end
   end
 
   def edit
@@ -40,8 +44,11 @@ class AstrosController < ApplicationController
 
   def update
     @astro.update(astro_params)
-    @astro.save
-    redirect_to astro_path(@astro), notice: "Astro was successfully updated!"
+    if @astro.save
+      redirect_to astro_path(@astro)
+    else
+      render :new
+    end
   end
 
   def destroy

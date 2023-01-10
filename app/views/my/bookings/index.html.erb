@@ -1,5 +1,5 @@
 <div class="container" style="padding-top: 100px;">
-  <h1 class="mx-5 my-5">All your bookings:</h1>
+  <h1 class="mx-5 my-5">All your astros bookings:</h1>
   <div class="cards mx-5">
     <% @bookings.each do |booking|%>
       <div class="card-body bg-transparent">
@@ -9,6 +9,14 @@
           <p class="mx-2 mb-1"><strong>Check in:</strong> <%= booking.check_in %></p>
           <p class="mx-2 mb-1"><strong>Check out:</strong> <%= booking.check_out %></p>
           <p class="mx-2 mb-1"><strong>Status:</strong> <%= booking.status %></p>
+        </div>
+        <div class="status-update mt-3">
+          <div class="status-confirm">
+            <%= link_to "Confirm", my_booking_path(booking, booking: {status: "Confirmed"}), method: :patch, class:"my-2 btn btn-space" %>
+          </div>
+          <div class="status-confirm">
+            <%= link_to "Reject", my_booking_path(booking, booking: {status: "Cancelled"}), method: :patch, class:"my-2 btn btn-space" %>
+          </div>
         </div>
       </div>
     <% end %>

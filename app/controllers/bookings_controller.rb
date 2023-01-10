@@ -1,9 +1,13 @@
 class BookingsController < ApplicationController
-  before_action :set_astro_id, only: [:new, :create, :confirm, :reject]
-  before_action :set_booking, only: [:confirm, :reject, :destroy]
+  before_action :set_astro_id, only: [:new, :create]
+  before_action :set_booking, only: [:show, :destroy, :update]
 
   def index
     @bookings = Booking.where("user_id = ?", current_user.id)
+  end
+
+  def show
+    @astro = @booking.astro
   end
 
   def new
@@ -14,32 +18,23 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.astro = @astro
     @booking.user = current_user
-    @booking.status = "Pending"
-
+    @booking.status = "Pending confirmation"
     if @booking.save!
-      redirect_to bookings_path, notice: "Booking request was succesfully created! Check its status!"
+      redirect_to bookings_path
     else
-      render :new, notice: "Unfortunately, it's not possible to proceed with your request."
+      render :new
     end
+  end
+
+  def update
+    @booking.status = "Pending confirmation"
+    @booking.save!
+    redirect_to booking_path(@booking)
   end
 
   def destroy
     @booking.destroy
-    redirect_to astro_path(@booking.astro), notice: "Booking was successfully cancelled!"
-  end
-
-  def astros_host
-    @bookings = current_user.bookings_as_owner
-  end
-
-  def confirm
-    @booking.confirm!
-    redirect_to astros_host_astro_bookings_path, notice: "Your booking request was confirmed!"
-  end
-
-  def reject
-    @booking.reject!
-    redirect_to astros_host_astro_bookings_path, notice: "Your booking request was rejected!"
+    redirect_to astro_path(@booking.astro)
   end
 
   private
