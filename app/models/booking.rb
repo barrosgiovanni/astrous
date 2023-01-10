@@ -6,13 +6,5 @@ class Booking < ApplicationRecord
   validates :status, presence: true
 
   # accept or reject the booking request ...
-  enum status: { Pending: 0, Confirmed: 1, Rejected: 2 }
-
-  def confirm!
-    self.update(status: 1)
-  end
-
-  def reject!
-    self.update(status: 2)
-  end
+  validates :status, inclusion: { in: ["Pending guest request", "Pending confirmation", "Confirmed", "Canceled"], allow_nil: true }
 end
