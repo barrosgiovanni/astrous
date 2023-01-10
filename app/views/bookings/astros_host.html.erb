@@ -1,19 +1,21 @@
-<div class="container" style="padding-top: 200px;">
+<div class="container" style="padding-top: 100px;">
+  <h1 class="mx-5 my-5">All your astros bookings:</h1>
   <div class="cards mx-5">
     <% @bookings.each do |booking|%>
       <div class="card-body bg-transparent">
         <%= image_tag "moon.jpg", class: "card-img mb-3", crop: :fill %>
         <div class="card-info">
-          <p class="mx-2 mb-1"><strong>Check In:</strong> <%= booking.check_in %></p>
-          <p class="mx-2 mb-1"><strong>Check Out:</strong> <%= booking.check_out %></p>
+          <h4 class="mx-2 mb-3"><%= booking.astro.name %></h4>
+          <p class="mx-2 mb-1"><strong>Check in:</strong> <%= booking.check_in %></p>
+          <p class="mx-2 mb-1"><strong>Check out:</strong> <%= booking.check_out %></p>
           <p class="mx-2 mb-1"><strong>Status:</strong> <%= booking.status %></p>
         </div>
-        <div>
-          <div>
-            <a class="button">
-            <%= button_to "Confirm", confirm_booking_path(booking), params: {booking: booking}, method: :put %> </a></div>
-            <a class="button">
-            <%= button_to "Reject", reject_booking_path(booking), params: {booking: booking}, method: :put %> </a></div>
+        <div class="status-update mt-3">
+          <div class="status-confirm">
+            <%= link_to "Confirm", confirm_booking_path(booking), params: {booking: booking}, method: :put, class:"my-2 btn btn-space" %> </a></div>
+          </div>
+          <div class="status-confirm">
+            <%= link_to "Reject", reject_booking_path(booking), params: {booking: booking}, method: :put, class:"my-2 btn btn-space" %> </a></div>
           </div>
         </div>
       </div>
