@@ -1,4 +1,4 @@
-<div class="container my-5 py-5">
+<div class="container mt-5 py-5" style="min-height: 92vh">
   <div class="row justify-content-evenly my-5 py-5">
 
     <div class="col-5">
@@ -17,7 +17,7 @@
       <p class="show-data my-2"><strong>Mean radius: </strong><%= @astro.mean_radius%></p>
       <p class="show-data my-2"><strong>Discovered by: </strong><%= @astro.discovered_by%></p>
       <p class="show-data my-2"><strong>Discovered on: </strong><%= @astro.discovered_date%></p>
-      <p class="show-data show-price my-4"><strong>Price: <%= @astro.price%> A$$</strong></p>
+      <p class="show-data show-price my-4"><strong>Price: <%= @astro.price%> A$$ per day</strong></p>
       <%= link_to "Book now!", new_astro_booking_path(@astro), class: "btn btn-space mt-4" %>
     </div>
 

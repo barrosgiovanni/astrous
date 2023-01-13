@@ -1,13 +1,14 @@
-<div class="container d-flex justify-content-start align-items-center" style="padding-top: 180px; border: 2px solid green;">
+<div class="container pt-5 d-flex justify-content-start align-items-center" style="border: 2px solid green;">
   <div class="form-fields">
-    <h1 class="mb-4 mt-1">Booking requests here!</h1>
+    <h1 class="mb-5 mt-1">You're about to rent <%= @astro.name %>!</h1>
     <%= simple_form_for([@astro, @booking]) do |f| %>
       <%= f.input :check_in %>
       <%= f.input :check_out %>
+      <p class="fs-5 mt-5">Price (per day): <strong><%= @astro.price %> A$$</strong></p>
+      <p class="fs-5 my-3">Total days: <strong> ### </strong></p>
+      <p class="fs-5 mb-4">Booking total: <strong> ### A$$</strong></p>
       <%= f.submit "Book now!", class: "btn btn-space mt-1 mb-4" %>
     <% end %>
-    <div class="text-start mt-2">
-      <%= button_to "Back to all astros!", astros_path, method: :get, class: "btn btn-space mt-1 mb-4" %>
-    </div>
   </div>
+    <%= button_to "Back to all astros!", astros_path, method: :get, class: "btn btn-space btn-back" %>
 </div>
