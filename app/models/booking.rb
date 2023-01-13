@@ -6,5 +6,5 @@ class Booking < ApplicationRecord
   validates :status, presence: true
 
   # accept or reject the booking request ...
-  validates :status, inclusion: { in: ["Pending guest request", "Pending confirmation", "Confirmed", "Canceled"], allow_nil: true }
+  validates :status, inclusion: { in: ["Pending request", "Pending confirmation", "Confirmed", "Canceled"], allow_nil: true }
 end
