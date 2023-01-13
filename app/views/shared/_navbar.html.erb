@@ -1,6 +1,6 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-top">
   <div class="container-fluid">
-    <%= link_to "#", class: "navbar-brand" do %>
+    <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag "https://res.cloudinary.com/dgjvosgwy/image/upload/v1672673293/astrouslogo1_yu5hg3.png" %>
     <% end %>
 
@@ -11,16 +11,16 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
           <li class="nav-item active">
-            <%= link_to "Home", "#", class: "nav-link" %>
+            <%= link_to "Home", root_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "About", "#", class: "nav-link" %>
+            <%= link_to "About", about_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "AstroSearch", "#", class: "nav-link" %>
+            <%= link_to "AstroSearch", astros_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Contact", "#", class: "nav-link" %>
+            <%= link_to "Contact", contact_path, class: "nav-link" %>
           </li>
         <% if user_signed_in? %>
           <li class="nav-item dropdown">

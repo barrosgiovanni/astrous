@@ -1,6 +1,10 @@
-<div class="container mt-5 d-flex justify-content-start align-items-center" style="background-image: url(https://res.cloudinary.com/dgjvosgwy/image/upload/v1672664108/bg2_cb6axn.jpg);">
-<div class="call-to-action ms-5 py-5 px-5">
-  <h1 class="slogan">Extend your limits,<br>travel the galaxy,<br>rent your astro.</h1>
-  <%= link_to "Explore", new_user_session_path, class: "btn btn-space mt-5" %>
-</div>
+<div class="container pt-5 d-flex justify-content-start align-items-center" style="min-height: 100vh; background-image: url(https://res.cloudinary.com/dgjvosgwy/image/upload/v1672664108/bg2_cb6axn.jpg);">
+  <div class="call-to-action ms-5 py-5 px-5">
+    <h1 class="slogan">Extend your limits,<br>travel the galaxy,<br>rent your astro.</h1>
+    <% if user_signed_in? %>
+      <%= link_to "Explore", astros_path, class: "btn btn-space mt-5" %>
+    <% else %>
+      <%= link_to "Explore", new_user_session_path, class: "btn btn-space mt-5" %>
+    <% end %>
+  </div>
 </div>
