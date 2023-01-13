@@ -1,7 +1,8 @@
 <div class="container" style="padding-top: 100px;">
   <h1 class="mx-5 my-5">All your astros bookings:</h1>
   <div class="cards mx-5">
-    <% @bookings.each do |booking|%>
+    <% @astros.each do |astro| %>
+    <% astro.bookings.each do |booking|%>
       <div class="card-body bg-transparent">
         <%= image_tag "moon.jpg", class: "card-img mb-3", crop: :fill %>
         <div class="card-info">
@@ -15,10 +16,11 @@
             <%= link_to "Confirm", my_booking_path(booking, booking: {status: "Confirmed"}), method: :patch, class:"my-2 btn btn-space" %>
           </div>
           <div class="status-confirm">
-            <%= link_to "Reject", my_booking_path(booking, booking: {status: "Cancelled"}), method: :patch, class:"my-2 btn btn-space" %>
+            <%= link_to "Reject", my_booking_path(booking, booking: {status: "Canceled"}), method: :patch, class:"my-2 btn btn-space" %>
           </div>
         </div>
       </div>
+    <% end %>
     <% end %>
   </div>
 </div>
