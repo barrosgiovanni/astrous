@@ -17,10 +17,10 @@
       <%= f.input :image_url %>
       <%= f.input :photo, as: :file %>
       <%= f.input :price %>
-      <%= f.submit "List astro", class: "btn btn-space mt-1 mb-4" %>
+      <%= f.button :submit, "List astro", class: "btn btn-space mt-1 mb-4" %>
     <% end %>
   </div>
 </div>
-<div class="d-flex justify-content-end">
+<%# <div class="d-flex justify-content-end">
   <%= button_to "Back to all astros!", astros_path, method: :get, class: "btn btn-space mb-4 me-5" %>
-</div>
+<%# </div> %>
