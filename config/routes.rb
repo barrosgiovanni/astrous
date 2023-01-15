@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   get 'about', to: 'pages#about'
   get 'contact', to: 'pages#contact'
 
-  resources :astros do
+  resources :astros, only: %i[new create]
+
+  resources :astros, except: %i[new create] do
     collection do
       post :index
     end

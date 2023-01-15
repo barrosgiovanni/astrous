@@ -35,7 +35,7 @@ class AstrosController < ApplicationController
     if @astro.save
       redirect_to astro_path(@astro), notice: "Astro was successfully listed!"
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -68,6 +68,21 @@ class AstrosController < ApplicationController
   end
 
   def astro_params
-    params.require(:astro).permit(:name, :body_type, :around_planet, :description, :mass_value, :volume, :average_temperature, :density, :gravity, :mean_radius, :discovered_by, :discovered_date, :image_url, :photo, :price)
+    params.require(:astro).permit(:name,
+                                  :body_type,
+                                  :around_planet,
+                                  :description,
+                                  :mass_value,
+                                  :volume,
+                                  :average_temperature,
+                                  :density,
+                                  :gravity,
+                                  :mean_radius,
+                                  :discovered_by,
+                                  :discovered_date,
+                                  :image_url,
+                                  :photo,
+                                  :price,
+                                  )
   end
 end
