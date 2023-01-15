@@ -13,10 +13,10 @@
         </div>
         <div class="status-update mt-3">
           <div class="status-confirm">
-            <%= link_to "Confirm", my_booking_path(booking, booking: {status: "Confirmed"}), method: :patch, class:"my-2 btn btn-space" %>
+            <%= link_to "Confirm", my_bookings_path(booking: {status: "Confirmed"}), method: :patch, class: "my-2 btn btn-space" %>
           </div>
           <div class="status-confirm">
-            <%= link_to "Reject", my_booking_path(booking, booking: {status: "Canceled"}), method: :patch, class:"my-2 btn btn-space" %>
+            <%= link_to "Reject", my_bookings_path(booking: {status: "Canceled"}), method: :patch, class: "my-2 btn btn-space" %>
           </div>
         </div>
       </div>

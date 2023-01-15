@@ -8,10 +8,12 @@ Rails.application.routes.draw do
     collection do
       post :index
     end
-    resources :bookings, only: %i[new create]
+    resources :bookings, only: %i[create]
   end
 
-  resources :bookings, only: %i[index show destroy update]
+  resources :bookings, only: %i[index show destroy update] do
+    resources :reviews, only: [:create, :index, :show]
+  end
 
   namespace :my do
     resources :astros, only: %i[index]

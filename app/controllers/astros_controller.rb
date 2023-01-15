@@ -27,6 +27,7 @@ class AstrosController < ApplicationController
 
   def new
     @astro = Astro.new
+    # @user = current_user
   end
 
   def create
@@ -63,6 +64,6 @@ class AstrosController < ApplicationController
   end
 
   def astro_params
-    params.require(:astro).permit(:name, :body_type, :average_temperature, :density, :gravity, :mean_radius, :discovered_by, :discovered_date, :price, :image_url, :around_planet, :mass_value, :volume, :description)
+    params.require(:astro).permit(:name, :body_type, :around_planet, :description, :mass_value, :volume, :average_temperature, :density, :gravity, :mean_radius, :discovered_by, :discovered_date, :image_url, :photo, :price)
   end
 end
