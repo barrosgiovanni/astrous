@@ -1,19 +1,6 @@
 <div class="container my-5 py-5">
 
-    <div class="row justify-content-center my-4 py-5">
-      <div class="col-6">
-        <%= form_with url: astros_path, method: :get, class: "d-flex" do %>
-          <%= text_field_tag :query,
-            params[:query],
-            class: "form-control me-1",
-            placeholder: "Find an astro to rent ..."
-          %>
-          <%= submit_tag "AstroSearch", class: "btn btn-space" %>
-        <% end %>
-      </div>
-    </div>
-
-    <div class="cards mx-5" id="astros">
+    <div class="cards mx-5 my-5" id="astros">
       <% @astros.each do |astro|%>
         <div class="card-body bg-transparent">
             <%= image_tag "moon.jpg", class: "card-img mb-3", crop: :fill %>
@@ -27,17 +14,11 @@
               <p class="mx-2 mb-1"><strong>Gravity:</strong> <%= astro.gravity %></p>
               <p class="mx-2 mb-3"><strong>Mean radius:</strong> <%= astro.mean_radius %></p>
               <p class="price-info mx-2 mb-1"><strong>Price:</strong> <%= astro.price %>A$$</p>
-              <%= link_to "Book now!", new_astro_booking_path(astro), class: "btn btn-space mt-4" %>
-              <%= link_to "More info", astro_path(astro), class: "btn btn-space mt-4" %>
+              <%= link_to "Edit", new_astro_booking_path(astro), class: "btn btn-space mt-4" %>
+              <%= link_to "Delete", astro_path(astro), class: "btn btn-space mt-4" %>
             </div>
         </div>
       <% end %>
-    </div>
-
-    <div class="pag-bar mt-5 pt-5" id="load-more-button">
-      <%# <%== pagy_bootstrap_nav(@pagy) %>
-      <%# <%== pagy_next_link(@pagy, text: 'Load more...', link_extra: 'id="next_link"') %>
-      <%= button_to "Load more", pagy_url_for(@pagy, @pagy.next), class:"btn-load" %>
     </div>
 
 </div>

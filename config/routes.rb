@@ -8,15 +8,18 @@ Rails.application.routes.draw do
     collection do
       post :index
     end
-    resources :bookings, only: %i[create]
+    collection do
+      get :listed_astros
+    end
+    resources :bookings, only: %i[new create]
   end
 
-  resources :bookings, only: %i[index show destroy edit update] do
-    resources :reviews, only: [:create, :index, :show]
+  resources :bookings, only: %i[index] do
+    collection do
+      get :hosted_astros
+    end
   end
 
-  namespace :my do
-    resources :astros, only: %i[index]
-    resources :bookings, only: %i[index update]
-  end
+  put 'confirm_booking/:id', as: :confirm_booking, to: 'bookings#confirm'
+  put 'reject_booking/:id', as: :reject_booking, to: 'bookings#reject'
 end
