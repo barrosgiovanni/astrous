@@ -19,10 +19,10 @@ class AstrosController < ApplicationController
 
   def show
     @booking = Booking.new
+    @bookings = @astro.bookings
     # description = Astronomy::Information.new.search '#{@astro.name}'
     # astro_info = Astronomy::Information.new.search "Uranus"
     # astro_info.each { |astro| puts astro["description"] if astro["name"] == "Uranus" }
-    @bookings = @astro.bookings
   end
 
   def new
@@ -48,7 +48,7 @@ class AstrosController < ApplicationController
     if @astro.save
       redirect_to astro_path(@astro)
     else
-      render :new
+      render :edit
     end
   end
 

@@ -10,17 +10,13 @@ class BookingsController < ApplicationController
     @astro = @booking.astro
   end
 
-  def new
-    @booking = Booking.new
-  end
-
   def create
     @booking = Booking.new(booking_params)
     @booking.astro = @astro
     @booking.user = current_user
     @booking.status = "Pending confirmation"
-    if @booking.save!
-      redirect_to bookings_path
+    if @booking.save
+      redirect_to booking_path(@booking)
     else
       render :new
     end
