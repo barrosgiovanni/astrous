@@ -19,8 +19,6 @@ class AstrosController < ApplicationController
 
   def show
     @booking = Booking.new
-    @astro = Astro.find(params[:id])
-    @bookings = @astro.bookings
     # description = Astronomy::Information.new.search '#{@astro.name}'
     # astro_info = Astronomy::Information.new.search "Uranus"
     # astro_info.each { |astro| puts astro["description"] if astro["name"] == "Uranus" }
@@ -32,10 +30,10 @@ class AstrosController < ApplicationController
   end
 
   def create
-    @astro = Astro.create(astro_params)
+    @astro = Astro.new(astro_params)
     @astro.user = current_user
     if @astro.save
-      redirect_to astro_path(@astro)
+      redirect_to astro_path(@astro), notice: "Astro was successfully listed!"
     else
       render :new
     end
@@ -47,7 +45,7 @@ class AstrosController < ApplicationController
   def update
     @astro.update(astro_params)
     if @astro.save
-      redirect_to astro_path(@astro)
+      redirect_to astro_path(@astro), notice: "Astro was successfully updated!"
     else
       render :edit
     end
@@ -56,6 +54,11 @@ class AstrosController < ApplicationController
   def destroy
     @astro.destroy
     redirect_to astros_path, status: :see_other
+  end
+
+  # to see all the astros that have been listed by the current user ...
+  def listed_astros
+    @astros = current_user.astros
   end
 
   private
