@@ -19,6 +19,8 @@
       <%= f.input :price %>
       <%= f.submit "Update", class: "btn btn-space mt-1 mb-4" %>
     <% end %>
+    <%= link_to "Delete #{@astro.name}", astros_path, method: :delete,
+    data: { confirm: "Are you sure?" }, class: "btn btn-space mt-1 mb-4" %>
   </div>
 </div>
 <div class="d-flex justify-content-end">

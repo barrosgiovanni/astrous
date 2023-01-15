@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
-  before_action :set_astro_id, only: [:new, :create]
-  before_action :set_booking, only: [:show, :destroy, :update]
+  before_action :set_astro_id, only: %i[create]
+  before_action :set_booking, only: %i[show destroy update]
 
   def index
     @bookings = Booking.where("user_id = ?", current_user.id)
@@ -18,7 +18,7 @@ class BookingsController < ApplicationController
     if @booking.save
       redirect_to booking_path(@booking)
     else
-      render :new
+      redirect_to astro_path(@astro)
     end
   end
 
@@ -30,7 +30,7 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking.destroy
-    redirect_to astro_path(@booking.astro)
+    redirect_to root_path
   end
 
   private
