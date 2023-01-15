@@ -5,7 +5,7 @@ class Booking < ApplicationRecord
   validates :check_in, :check_out, presence: true, uniqueness: true
   validates :status, presence: true
 
-  # accept or reject the bookings request
+  # accept or reject the bookings request ...
   enum status: { Pending: 0, Confirmed: 1, Rejected: 2 }
 
   def confirm!
