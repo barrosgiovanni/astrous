@@ -27,6 +27,7 @@ class AstrosController < ApplicationController
 
   def new
     @astro = Astro.new
+    # @user = current_user
   end
 
   def create

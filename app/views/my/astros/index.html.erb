@@ -14,6 +14,8 @@
             <p class="mx-2 mb-1"><strong>Gravity:</strong> <%= astro.gravity %></p>
             <p class="mx-2 mb-3"><strong>Mean radius:</strong> <%= astro.mean_radius %></p>
             <p class="price-info mx-2 mb-1"><strong>Price:</strong> <%= astro.price %>A$$</p>
+            <%= link_to "Edit", edit_astro_path(astro), class: "btn btn-space mt-4" %>
+            <%= link_to "Delete astro", astros_path, class: "btn btn-space mt-4" %>
           </div>
       </div>
     <% end %>

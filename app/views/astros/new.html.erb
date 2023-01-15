@@ -1,6 +1,6 @@
 <div class="container d-flex justify-content-start align-items-center" style="padding-top: 180px; border: 2px solid green;">
   <div class="form-fields">
-    <h1 class="mb-4 mt-1">Fill the form to list your astro!</h1>
+    <h1 class="mb-4 mt-1">List your astro!</h1>
     <%= simple_form_for(@astro) do |f| %>
       <%= f.input :name %>
       <%= f.input :body_type %>
@@ -17,7 +17,7 @@
       <%= f.input :image_url %>
       <%= f.input :photo, as: :file %>
       <%= f.input :price %>
-      <%= f.submit "List astro!", class: "btn btn-space mt-1 mb-4" %>
+      <%= f.submit "List astro", class: "btn btn-space mt-1 mb-4" %>
     <% end %>
   </div>
 </div>
