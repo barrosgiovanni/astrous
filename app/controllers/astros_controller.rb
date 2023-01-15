@@ -1,6 +1,6 @@
 class AstrosController < ApplicationController
-  before_action :set_astro, only: [:show, :edit, :update, :destroy]
-  skip_before_action :authenticate_user!, only: [:show, :index]
+  before_action :set_astro, only: %i[show edit update destroy]
+  skip_before_action :authenticate_user!, only: %i[show index]
 
   def index
     if params[:query].present?
@@ -19,10 +19,11 @@ class AstrosController < ApplicationController
 
   def show
     @booking = Booking.new
+    @astro = Astro.find(params[:id])
+    @bookings = @astro.bookings
     # description = Astronomy::Information.new.search '#{@astro.name}'
     # astro_info = Astronomy::Information.new.search "Uranus"
     # astro_info.each { |astro| puts astro["description"] if astro["name"] == "Uranus" }
-    @bookings = @astro.bookings
   end
 
   def new
@@ -31,7 +32,7 @@ class AstrosController < ApplicationController
   end
 
   def create
-    @astro = Astro.new(astro_params)
+    @astro = Astro.create(astro_params)
     @astro.user = current_user
     if @astro.save
       redirect_to astro_path(@astro)
@@ -48,7 +49,7 @@ class AstrosController < ApplicationController
     if @astro.save
       redirect_to astro_path(@astro)
     else
-      render :new
+      render :edit
     end
   end
 
