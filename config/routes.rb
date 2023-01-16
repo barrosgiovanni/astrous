@@ -4,17 +4,17 @@ Rails.application.routes.draw do
   get 'about', to: 'pages#about'
   get 'contact', to: 'pages#contact'
 
-  resources :astros, only: %i[new create]
-
-  resources :astros, except: %i[new create] do
-    collection do
-      post :index
-    end
+  resources :astros, except: %i[index create] do
     collection do
       get :listed_astros
     end
     resources :bookings, only: %i[new create]
   end
+
+  resources :astros, only: %i[create]
+
+  post 'astros', to: 'astros#index'
+  resources :astros, only: %i[index]
 
   resources :bookings, only: %i[index] do
     collection do

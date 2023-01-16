@@ -6,7 +6,7 @@
     </div>
 
     <div class="col-5 ">
-      <h1 class="astro-name mb-4"><%= @astro.name %></h1>
+      <h1 class="astro-name mb-4 font-weight-bold"><%= @astro.name %></h1>
       <p class="show-data my-2"><strong>Body type: </strong><%= @astro.body_type%></p>
       <p class="show-data my-2"><strong>Around planet: </strong><%= @astro.around_planet%></p>
       <p class="show-data my-2"><strong>Mass value: </strong><%= @astro.mass_value%></p>
@@ -18,7 +18,13 @@
       <p class="show-data my-2"><strong>Discovered by: </strong><%= @astro.discovered_by%></p>
       <p class="show-data my-2"><strong>Discovered on: </strong><%= @astro.discovered_date%></p>
       <p class="show-data show-price my-4"><strong>Price: <%= @astro.price%> A$$ per day</strong></p>
-      <%= link_to "Book now!", new_astro_booking_path(@astro), class: "btn btn-space mt-4" %>
+
+      <% if @astro.user != current_user %>
+        <%= link_to "Book now!", new_astro_booking_path(@astro), class: "btn btn-space mt-4" %>
+      <% else %>
+        <%= link_to "Edit", edit_astro_path(@astro), class: "btn btn-space mt-2 me-2" %>
+        <%= link_to "Delete", astro_path(@astro), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove #{@astro.name}?" }, class: "btn btn-space mt-2 ms-2" %>
+      <% end %>
     </div>
 
   </div>
