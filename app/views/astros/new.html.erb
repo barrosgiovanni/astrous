@@ -17,7 +17,7 @@
       <%= f.input :image_url %>
       <%= f.input :photo, as: :file %>
       <%= f.input :price %>
-      <%= f.button :submit, "List astro", class: "btn btn-space mt-1 mb-4" %>
+      <%= f.button :submit, "List astro", data: { turbo_method: :post }, class: "btn btn-space mt-1 mb-4" %>
     <% end %>
   </div>
 </div>
