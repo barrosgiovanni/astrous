@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   resources :astros, only: %i[create]
 
-  post 'astros', to: 'astros#index'
+  # post 'astros', to: 'astros#index'
   resources :astros, only: %i[index]
 
   resources :bookings, only: %i[index] do

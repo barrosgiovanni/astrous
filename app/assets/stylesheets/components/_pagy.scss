@@ -1,29 +1,30 @@
 .pag-bar {
-  width: 20%;
+  width: 30%;
   margin: 0 auto;
 }
 
-.button_to {
+.pagination {
   display: flex;
   justify-content: center;
 }
 
-.button_to button {
-  text-align: center;
-  line-height: 1.2rem !important;
-  color: #fff !important;
-  font-size: 1.2rem !important;
-  text-decoration: none;
-  box-sizing: border-box;
-  background: transparent;
-  border: 1px solid #fff !important;
-  border-radius: 0.2rem !important;
-  padding: 0.6rem 1.2rem 0.6rem 1.2rem !important;
-  transition: 0.2s;
+a.page-link {
+  color: #31AEBF;
 }
 
-.button_to button:hover {
-  background-color: #31AEBF;
-  box-shadow: 0 0 10px #31AEBF, 0 0 40px #31AEBF, 0 0 80px #31AEBF;
-  border: 1px solid #31AEBF !important;
+.page-item.active .page-link {
+  z-index: 3;
+  color: #fff;
+  background-color: #31AEBF !important;
+  border-color: #31AEBF !important;
+  box-shadow: 0 0 1px #31AEBF, 0 0 5px #31AEBF, 0 0 10px #31AEBF;
+}
+
+.page-link:hover {
+  color: #31AEBF !important;
+  box-shadow: 0 0 1px #31AEBF, 0 0 5px #31AEBF, 0 0 10px #31AEBF;
+}
+
+.page-item.active .page-link:hover {
+  color: #fff !important;
 }
