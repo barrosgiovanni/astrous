@@ -1,41 +1,32 @@
 <div class="container my-5 py-5">
 
-    <div class="row justify-content-center my-4 py-5">
-      <div class="col-6">
-        <%= form_with url: astros_path, method: :get, class: "d-flex" do %>
-          <%= text_field_tag :query,
-            params[:query],
-            class: "form-control me-1",
-            placeholder: "Find an astro to rent ..."
-          %>
-          <%= submit_tag "AstroSearch", class: "btn btn-space" %>
-        <% end %>
-      </div>
-    </div>
-
-    <div class="cards mx-5" id="astros">
-      <% @astros.each do |astro|%>
-        <div class="card-body bg-transparent">
-            <%= image_tag "moon.jpg", class: "card-img mb-3", crop: :fill %>
-            <div class="card-info">
-              <p class="mx-2 mb-1"><strong>Name:</strong> <%= astro.name %></p>
-              <p class="mx-2 mb-1"><strong>Body type:</strong> <%= astro.body_type %></p>
-              <p class="mx-2 mb-1"><strong>Mass value:</strong> <%= astro.mass_value %></p>
-              <p class="mx-2 mb-1"><strong>Avg temperature:</strong> <%= astro.average_temperature %></p>
-              <p class="mx-2 mb-1"><strong>Volume:</strong> <%= astro.volume %></p>
-              <p class="mx-2 mb-1"><strong>Density:</strong> <%= astro.density %></p>
-              <p class="mx-2 mb-1"><strong>Gravity:</strong> <%= astro.gravity %></p>
-              <p class="mx-2 mb-3"><strong>Mean radius:</strong> <%= astro.mean_radius %></p>
-              <p class="price-info mx-2 mb-1"><strong>Price:</strong> <%= astro.price %>A$$</p>
-              <%= link_to "Book now!", new_astro_booking_path(astro), class: "btn btn-space mt-4" %>
-              <%= link_to "More info", astro_path(astro), class: "btn btn-space mt-4" %>
-            </div>
-        </div>
+  <div class="row justify-content-center my-4 py-5">
+    <div class="col-6">
+      <%= form_with url: astros_path, method: :get, class: "d-flex" do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control me-1",
+          placeholder: "Find an astro to rent ..."
+        %>
+        <%= submit_tag "AstroSearch", class: "btn btn-space" %>
       <% end %>
     </div>
+  </div>
 
-    <div class="pag-bar mt-5 pt-5">
+  <div data-controller="infinite-scroll" data-action="scroll@window->infinite-scroll#scroll">
+    <div class="cards mx-5" id="astros" data-infinite-scroll-target="entries">
+      <%= render 'astros' %>
+    </div>
+
+    <div class="pag-bar mt-5 pt-5" data-infinite-scroll-target="pagination">
       <%== pagy_bootstrap_nav(@pagy) %>
     </div>
 
+  </div>
+
 </div>
+<!--
+    <div data-controller="hello">
+      <h1 data-target="hello.output"></h1>
+    </div>
+-->
