@@ -10,8 +10,6 @@ class AstrosController < ApplicationController
       # @astros = Astro.all
       @pagy, @astros = pagy(Astro.all)
     end
-
-    respond_to :html, :turbo_stream # POST
   end
 
   def show
@@ -33,11 +31,6 @@ class AstrosController < ApplicationController
       redirect_to astro_path(@astro), notice: "Astro was successfully listed!"
     else
       render :new, status: :unprocessable_entity
-    end
-
-    respond_to do |format|
-      format.html # GET
-      format.turbo_stream # POST
     end
   end
 

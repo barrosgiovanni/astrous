@@ -34,10 +34,8 @@
       <% end %>
     </div>
 
-    <div class="pag-bar mt-5 pt-5" id="load-more-button">
-      <%# <%== pagy_bootstrap_nav(@pagy) %>
-      <%# <%== pagy_next_link(@pagy, text: 'Load more...', link_extra: 'id="next_link"') %>
-      <%= button_to "Load more", pagy_url_for(@pagy, @pagy.next), class:"btn-load" %>
+    <div class="pag-bar mt-5 pt-5">
+      <%== pagy_bootstrap_nav(@pagy) %>
     </div>
 
 </div>
