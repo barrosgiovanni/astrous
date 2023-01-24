@@ -10,6 +10,13 @@ class AstrosController < ApplicationController
       # @astros = Astro.all
       @pagy, @astros = pagy(Astro.all)
     end
+
+    respond_to do |format|
+      format.html
+      format.json {
+        render json: { entries: render_to_string(partial: 'astros', formats: [:html]), pagination: view_context.pagy_bootstrap_nav(@pagy) }
+      }
+    end
   end
 
   def show
