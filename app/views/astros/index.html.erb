@@ -1,5 +1,4 @@
 <div class="container my-5 py-5">
-
   <div class="row justify-content-center my-4 py-5">
     <div class="col-6">
       <%= form_with url: astros_path, method: :get, class: "d-flex" do %>
@@ -12,21 +11,12 @@
       <% end %>
     </div>
   </div>
-
   <div data-controller="infinite-scroll" data-action="scroll@window->infinite-scroll#scroll">
     <div class="cards mx-5" id="astros" data-infinite-scroll-target="entries">
       <%= render 'astros' %>
     </div>
-
     <div class="pag-bar mt-5 pt-5" data-infinite-scroll-target="pagination">
       <%== pagy_bootstrap_nav(@pagy) %>
     </div>
-
   </div>
-
 </div>
-<!--
-    <div data-controller="hello">
-      <h1 data-target="hello.output"></h1>
-    </div>
--->

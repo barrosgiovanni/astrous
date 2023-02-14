@@ -87,3 +87,5 @@ gem "pg_search"
 gem 'astronomy'
 
 gem 'pagy'
+
+gem 'pundit'
