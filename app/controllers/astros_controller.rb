@@ -5,16 +5,16 @@ class AstrosController < ApplicationController
   def index
     if params[:query].present?
       # @astros = Astro.search_astros(params[:query])
-      @pagy, @astros = pagy(Astro.search_astros(params[:query]))
+      @pagy, @astros = pagy(policy_scope(Astro.search_astros(params[:query])))
     else
       # @astros = Astro.all
-      @pagy, @astros = pagy(Astro.all)
+      @pagy, @astros = pagy(policy_scope(Astro))
     end
 
     respond_to do |format|
       format.html
       format.json {
-        render json: { entries: render_to_string(partial: 'astros', formats: [:html]), pagination: view_context.pagy_bootstrap_nav(@pagy) }
+        render json: { entries:render_to_string(partial:'astros', formats:[:html]), pagination:view_context.pagy_bootstrap_nav(@pagy) }
       }
     end
   end
@@ -44,9 +44,11 @@ class AstrosController < ApplicationController
   end
 
   def edit
+    authorize @astro
   end
 
   def update
+    authorize @astro
     @astro.update(astro_params)
     if @astro.save
       redirect_to astro_path(@astro), notice: "Astro was successfully updated!"
@@ -56,6 +58,7 @@ class AstrosController < ApplicationController
   end
 
   def destroy
+    authorize @astro
     @astro.destroy
     redirect_to astros_path, status: :see_other
   end
