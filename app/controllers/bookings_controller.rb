@@ -4,17 +4,19 @@ class BookingsController < ApplicationController
 
   # all bookings made by the current user ...
   def index
-    @bookings = Booking.where("user_id = ?", current_user.id)
+    @bookings = policy_scope(Booking)
   end
 
   def new
     @booking = Booking.new
+    authorize @booking
   end
 
   def create
     @booking = Booking.new(booking_params)
     @booking.astro = @astro
     @booking.user = current_user
+    authorize @booking
     @booking.status = "Pending"
     if @booking.save!
       redirect_to bookings_path, notice: "Your bookings was created. Waiting for host confirmation ..."
@@ -24,6 +26,7 @@ class BookingsController < ApplicationController
   end
 
   def destroy
+    authorize @booking
     @booking.destroy
     redirect_to root_path
   end

@@ -11,8 +11,13 @@
         <p class="mx-2 mb-1"><strong>Gravity:</strong> <%= astro.gravity %></p>
         <p class="mx-2 mb-3"><strong>Mean radius:</strong> <%= astro.mean_radius %></p>
         <p class="price-info mx-2 mb-1"><strong>Price:</strong> <%= astro.price %>A$$</p>
-        <%= link_to "Book now!", new_astro_booking_path(astro), class: "btn btn-space mt-4" %>
-        <%= link_to "More info", astro_path(astro), class: "btn btn-space mt-4" %>
+        <% if astro.user != current_user  %>
+          <%= link_to "Book now!", new_astro_booking_path(astro), class: "btn btn-space mt-4" %>
+          <%= link_to "More info", astro_path(astro), class: "btn btn-space mt-4" %>
+        <% else %>
+          <%= link_to "More info", astro_path(astro), class: "btn btn-space mt-4" %>
+        <% end %>
+
       </div>
   </div>
 <% end %>
