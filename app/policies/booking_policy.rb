@@ -18,4 +18,16 @@ class BookingPolicy < ApplicationPolicy
   def destroy
     record.user == user
   end
+
+  def hosted_astros?
+    true
+  end
+
+  def confirm?
+    true
+  end
+
+  def reject?
+    true
+  end
 end

@@ -11,8 +11,8 @@
           <p class="mx-2 mb-1"><strong>Status:</strong> <%= booking.status %></p>
         </div>
         <div class="d-flex justify-content-evenly">
-          <a class="button"><%= button_to "Confirm", confirm_booking_path(booking), params: {booking: booking}, method: :put, class: "btn btn-space mt-3"%></a>
-          <a class="button"><%= button_to "Reject", reject_booking_path(booking), params: {booking: booking}, method: :put, class: "btn btn-space mt-3" %></a>
+          <a class="button"><%= button_to "Confirm", confirm_booking_path(booking), params: {booking: booking}, method: :put, class: "btn btn-space mt-5"%></a>
+          <a class="button"><%= button_to "Reject", reject_booking_path(booking), params: {booking: booking}, method: :put, class: "btn btn-space mt-5" %></a>
         </div>
       </div>
     <% end %>

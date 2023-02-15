@@ -33,16 +33,19 @@ class BookingsController < ApplicationController
 
   def hosted_astros
     @bookings = current_user.bookings_as_owner
+    authorize @bookings
   end
 
   def confirm
     booking = Booking.find(params[:id])
+    authorize booking
     booking.confirm!
     redirect_to hosted_astros_bookings_path, notice: "Request was confirmed!"
   end
 
   def reject
     booking = Booking.find(params[:id])
+    authorize booking
     booking.reject!
     redirect_to hosted_astros_bookings_path, notice: "Request was rejected!"
   end
