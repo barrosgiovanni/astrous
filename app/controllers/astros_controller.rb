@@ -20,6 +20,7 @@ class AstrosController < ApplicationController
   end
 
   def show
+    authorize @astro
     @booking = Booking.new
     # description = Astronomy::Information.new.search '#{@astro.name}'
     # astro_info = Astronomy::Information.new.search "Uranus"
@@ -28,12 +29,13 @@ class AstrosController < ApplicationController
 
   def new
     @astro = Astro.new
-    # @user = current_user
+    authorize @astro
   end
 
   def create
     @astro = Astro.new(astro_params)
     @astro.user = current_user
+    authorize @astro
     if @astro.save
       redirect_to astro_path(@astro), notice: "Astro was successfully listed!"
     else
